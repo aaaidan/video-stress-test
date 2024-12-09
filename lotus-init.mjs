@@ -31,7 +31,7 @@ export async function initLotus() {
 
   let scene = await lotus.createScene({
     element: document.querySelector(".canvas"),
-    url: "assets2/scenes/iPhoneViewer_L_ROW_avif.lsd",
+    url: "assets/scenes/iPhoneViewer_L_ROW_avif.lsd",
   });
 
   await readyPromise(scene);
