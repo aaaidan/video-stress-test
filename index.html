@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="worker-src 'self' blob: pages.github.pie.apple.com">
+  <title>Marcom Video Stress Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="main">
+    <div class="layout-copy">
+      <h1>Apple Marcom Video Stress Test</h1>
+      <p>
+        This test repeatedly adds video elements to the dom until the browser
+        crashes. After each video is added, the total is saved to localStorage
+        so the "high water mark" can be recalled later.
+      </p>
+
+      <p id="data">
+        Video count: <span id="currentTestEl"></span><br />
+        Previous: <span id="previousTestsEl"></span>
+        <button id="clearPreviousTestsBtn">clear</button><br />
+        <button id="startBtn">Start test</button>
+        <button id="pauseBtn" disabled>Pause</button>
+      </p>
+      <div id="controls">
+        <p>
+          Test file:
+          <select id="video-selector">
+            <optgroup label="iphone-16-pro-hero (0:05)">
+              <option value="videos2/iphone-16-pro-hero-large_2x.mp4|1440x864">
+                large_2x (1440x864@2x)
+              </option>
+              <option value="videos2/iphone-16-pro-hero-large_1x.mp4|1440x864">
+                large_1x (1440x864)
+              </option>
+              <option value="videos2/iphone-16-pro-hero-medium_2x.mp4|1068x698">
+                medium_2x (1068x698@2x)
+              </option>
+              <option value="videos2/iphone-16-pro-hero-medium_1x.mp4|1068x698">
+                medium_1x (1068x698)
+              </option>
+              <option selected value="videos2/iphone-16-pro-hero-small_2x.mp4|734x424">
+                small_2x (734x424@2x)
+              </option>
+              <option value="videos2/iphone-16-pro-hero-small_1x.mp4|734x424">
+                small_1x (734x424)
+              </option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <label><input type="checkbox" id="playbackEnabled" checked="checked" />
+            test playback</label>
+        </p>
+        <p>
+          <label><input type="checkbox" id="clipPathEnabled" /> clip-path</label>
+        </p>
+        <p>
+          <label><input type="checkbox" id="willChangeEnabled" /> will-change</label>
+        </p>
+        <p>
+          <label><input type="checkbox" id="lotusEnabled" /> Load Lotus scene</label>
+        </p>
+      </div>
+    </div>
+
+    <div id="test">
+      <div class="canvas"></div>
+    </div>
+  </div>
+
+  <script src="lotus.js"></script>
+  <script type="module" src="lotus-init.mjs"></script>
+  <script type="module" src="video-stress-test.mjs"></script>
+
+</body>
+
+</html>
